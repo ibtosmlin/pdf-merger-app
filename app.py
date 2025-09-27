@@ -5,7 +5,6 @@ from pathlib import Path
 import streamlit as st
 
 import pdf_merger  # PDF変換・サムネイル抽出・ページ結合ロジック
-from pdf_merger.pagedata import create_blank_page
 
 # 📁 作業ディレクトリの準備
 CWD = Path(__file__).parent / ".work"
@@ -181,7 +180,7 @@ if "page_data_list" in st.session_state:
 
                 with col5:
                     if st.button("➕ ", key=f"insert-blank-after-{i}"):
-                        blank_page = create_blank_page()
+                        blank_page = pdf_merger.create_blank_page()
                         st.session_state.selected_pages.insert(i + 1, blank_page)
                         st.rerun()
 
